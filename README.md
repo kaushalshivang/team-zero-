@@ -1,1 +1,212 @@
 # team-zero-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Zero | Startathon</title>
+    <style>
+        :root {
+            --primary: #00ff88;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --overlay: rgba(15, 23, 42, 0.95);
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(to right, #00ff88, #60efff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        /* Project Section */
+        .project-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .project-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+        }
+
+        .project-info {
+            flex: 1.5;
+            min-width: 300px;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--overlay);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--primary);
+            max-width: 450px;
+            width: 85%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .role-tag {
+            color: var(--primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Team Zero</h1>
+            <p>Innovating for Startathon 2026</p>
+        </header>
+
+        <div class="team-grid">
+    <div class="card" onclick="openModal('Shivang Kaushal', 'Team Leader', 'https://i.ibb.co/d05qg9Gx/Whats-App-Image-2026-02-17-at-10-28-15-AM.jpg', 'Leading the technical strategy and ensuring seamless integration between frontend and backend.')">
+    <div class="role-tag">Leader</div>
+    <h3>Shivang Kaushal</h3>
+</div>
+
+    <div class="card" onclick="openModal('Sambit Kumar Garanayak', 'Developer', 'https://i.ibb.co/Ldby4Ltf/Whats-App-Image-2026-02-17-at-10-29-09-AM.jpg', 'Crafting the user interface and ensuring a responsive experience across all devices.')">
+    <div class="role-tag">Member</div>
+    <h3>Sambit Kumar</h3>
+</div>
+
+    <div class="card" onclick="openModal('Adhyansh Raina', 'Data Architect', 'https://i.ibb.co/JFtxQSQF/Whats-App-Image-2026-02-17-at-10-29-30-AM.jpg', 'Managing data flow and designing efficient database schemas for the project.')">
+    <div class="role-tag">Member</div>
+    <h3>Adhyansh Raina</h3>
+</div>
+
+    <div class="card" onclick="openModal('Ankit Kumar', 'QA Engineer', 'https://i.ibb.co/WvLwXyzC/Whats-App-Image-2026-02-17-at-11-08-55-AM.jpg', 'Focusing on edge-case testing and maintaining the quality of our code.')">
+        <div class="role-tag">Member</div>
+        <h3>Ankit Kumar</h3>
+    </div>
+</div>
+
+        <h2 style="margin-bottom: 1.5rem;">Our Project</h2>
+        <div class="project-section">
+            <img src="https://via.placeholder.com/500x300" alt="Project Preview" class="project-img">
+            <div class="project-info">
+                <h3 style="color: var(--primary);">The Zero-Waste App</h3>
+                <p>We are building a revolutionary platform that connects local businesses with excess inventory to community kitchens. Using real-time data tracking, we aim to reduce food waste by 40% in urban areas.</p>
+                <ul style="list-style-type: '⚡ '; padding-left: 20px;">
+                    <li>Built with React and Node.js</li>
+                    <li>Real-time notification system</li>
+                    <li>Secure API integration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="Profile" class="modal-img">
+            <div id="modal-role" class="role-tag"></div>
+            <h2 id="modal-name" style="margin: 10px 0;"></h2>
+            <p id="modal-bio" style="color: #94a3b8; line-height: 1.5;"></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(name, role, img, bio) {
+            document.getElementById('modal-name').innerText = name;
+            document.getElementById('modal-role').innerText = role;
+            document.getElementById('modal-img').src = img;
+            document.getElementById('modal-bio').innerText = bio;
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modalOverlay')) {
+                closeModal();
+            }
+        }
+    </script>
+
+</body>
+</html>
